@@ -1,0 +1,21 @@
+<Solution>
+  <Folder Name="/1 - Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path=".gitignore" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Packages.props" />
+    <File Path="README.md" />
+  </Folder>
+  <Folder Name="/1 - Solution Items/src/">
+    <File Path="src/Directory.Build.props" />
+  </Folder>
+  <Folder Name="/1 - Solution Items/tests/">
+    <File Path="tests/Directory.Build.props" />
+  </Folder>
+  <Folder Name="/2 - src/">
+    <Project Path="src/DotnetPackageTemplate/DotnetPackageTemplate.csproj" Id="cba4865b-d6b0-4a94-92cd-8a042f5ded12" />
+  </Folder>
+  <Folder Name="/3 - tests/">
+    <Project Path="tests/DotnetPackageTemplate.Tests/DotnetPackageTemplate.Tests.csproj" Id="b2ac3b8a-b47e-40db-800e-d3ed5082d432" />
+  </Folder>
+</Solution>
