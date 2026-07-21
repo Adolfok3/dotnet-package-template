@@ -19,8 +19,8 @@ Available template options:
 | Option | Description | Default |
 |---|---|---|
 | `-n`, `--name` | Name used for the solution, projects, and namespaces | *(required)* |
-| `-P`, `--PackageDescription` | One-line description written to `README.md` | `An awesome structured template for .NET packages.` |
-| `-p`, `--packageAuthor` | Author name written to `LICENSE` | `Luiz Adolfo` |
+| `-pd`, `--PackageDescription` | One-line description written to the generated package's `README.md` (see [README.md vs README.package.md](#readmemd-vs-readmepackagemd)) | `An awesome structured template for .NET packages.` |
+| `-pa`, `--packageAuthor` | Author name written to `LICENSE` | `Your Name` |
 
 ## Project structure
 
@@ -40,6 +40,8 @@ Available template options:
 ├── Directory.Packages.props # Centrally managed package versions
 ├── DotnetPackageTemplate.slnx
 ├── .editorconfig
+├── README.md                 # Documentation for THIS template repo (not copied to generated packages)
+├── README.package.md         # Scaffold README for the generated package (becomes its README.md)
 └── LICENSE
 ```
 
@@ -51,6 +53,9 @@ Contains the library project(s) that get packed and published to NuGet. Every pr
 
 ### `tests/`
 Contains the corresponding test project(s), one per `src` project, following the `<ProjectName>.Tests` naming convention. Test projects are non-packable (`IsPackable = false`) and reference the matching `src` project automatically by convention (`src/<ProjectName>/<ProjectName>.csproj`) — a new test project only needs to follow the naming pattern to be wired up, no manual `ProjectReference` needed.
+
+### `README.md` vs `README.package.md`
+This file (`README.md`) documents the *template repository itself* and is excluded from generated output. [`README.package.md`](README.package.md) is the scaffold for the *generated package's* own README — icon, badges, installation/usage sections — and gets renamed to `README.md` when a new package is created. If you add or reorder sections in either file, make sure you're editing the one you mean to.
 
 ### Solution folders (`.slnx`)
 The solution uses the newer [SLNX solution format](https://devblogs.microsoft.com/dotnet/introducing-slnx-support-dotnet-cli/) and groups content into virtual folders for a cleaner Solution Explorer / Rider view:
@@ -73,6 +78,8 @@ The solution uses the newer [SLNX solution format](https://devblogs.microsoft.co
 | `tests/Directory.Build.props` | Imports the root props, marks `tests/` projects as non-packable test projects, adds the test/mocking/assertion package references and their analyzers, wires the `ProjectReference` to the matching `src` project by naming convention, and adds global usings for `Xunit`, `NSubstitute`, and `FluentAssertions`. |
 | `.editorconfig` | Repository-wide C# formatting and naming-convention rules (e.g. interfaces prefixed with `I`, PascalCase types/members), enforced at build time via `EnforceCodeStyleInBuild`. |
 | `DotnetPackageTemplate.slnx` | Solution file (SLNX format) with the solution folder layout described above. |
+| `.template.config/template.json` | `dotnet new` template definition: `sourceName` renaming, symbols/parameters, and which files are excluded/renamed for generated output. |
+| `.template.config/dotnetcli.host.json` | Overrides the CLI short aliases for template parameters (`-pd` for `--PackageDescription`, `-pa` for `--packageAuthor`) instead of the engine's auto-generated first-letter aliases (`-P`/`-p`, easy to confuse with each other). |
 
 ## Analyzers
 
