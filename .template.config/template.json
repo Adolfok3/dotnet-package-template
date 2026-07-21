@@ -1,0 +1,65 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Adolfok3",
+  "classifications": [ "Library", "NuGet" ],
+  "identity": "Adolfok3.DotnetPackageTemplate",
+  "name": ".NET Package Template",
+  "shortName": "dotnetpkg",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "sourceName": "DotnetPackageTemplate",
+  "preferNameDirectory": true,
+  "guids": [
+    "cba4865b-d6b0-4a94-92cd-8a042f5ded12",
+    "b2ac3b8a-b47e-40db-800e-d3ed5082d432"
+  ],
+  "symbols": {
+    "kebabCaseName": {
+      "type": "derived",
+      "valueSource": "name",
+      "valueTransform": "kebabCase",
+      "replaces": "dotnet-package-template",
+      "description": "Kebab-case form of the project name, used in README.md"
+    },
+    "PackageDescription": {
+      "type": "parameter",
+      "datatype": "string",
+      "defaultValue": "An awesome structured template for .NET packages.",
+      "replaces": "An awesome structured template for .NET packages.",
+      "description": "One-line description of the package, used in README.md"
+    },
+    "packageAuthor": {
+      "type": "parameter",
+      "datatype": "string",
+      "defaultValue": "Adolfok3",
+      "replaces": "Adolfok3",
+      "description": "Package author, used in the LICENSE copyright notice"
+    },
+    "copyrightYear": {
+      "type": "generated",
+      "generator": "now",
+      "parameters": {
+        "format": "yyyy"
+      },
+      "replaces": "2026",
+      "description": "Current year, used in the LICENSE copyright notice"
+    }
+  },
+  "sources": [
+    {
+      "exclude": [
+        "**/[Bb]in/**",
+        "**/[Oo]bj/**",
+        "**/.vs/**",
+        "**/.git/**",
+        "**/.claude/**",
+        "**/.template.config/**",
+        "**/*.filelist",
+        "**/*.user",
+        "**/*.lock.json"
+      ]
+    }
+  ]
+}
