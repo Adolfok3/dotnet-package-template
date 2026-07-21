@@ -1,6 +1,6 @@
 {
   "$schema": "http://json.schemastore.org/template",
-  "author": "Template Author",
+  "author": "Adolfok3",
   "classifications": [ "Library", "NuGet" ],
   "identity": "DotnetPackageTemplate.Template",
   "name": ".NET Package Template",
